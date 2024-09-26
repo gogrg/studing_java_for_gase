@@ -1,28 +1,22 @@
 package account;
 
-//разбить на классы дебетовая и кредитная, кредитную сделать наследником дебетовой
-
 import java.math.BigDecimal;
 
+public class DebitAccount {
+    protected BigDecimal balance;
+    protected String name;
 
 
-public class Account {
-    private BigDecimal balance;
-    private String name;
-    private typeAccount type;
-
-    public Account()
+    public DebitAccount()
     {
         balance = BigDecimal.ZERO;
-        name = "";
-        type = typeAccount.DEBIT;
+        name = "Debit account";
     }
 
-    public Account(BigDecimal balance, String name, typeAccount type)
+    public DebitAccount(BigDecimal balance, String name)
     {
         this.balance = balance;
         this.name = name;
-        this.type = type;
     }
 
     public void setBalance(BigDecimal balance) {this.balance = balance;}
@@ -32,8 +26,4 @@ public class Account {
     public void setName(String name) {this.name = name;}
 
     public String getName() {return name;}
-
-    public typeAccount getType() {return type;}
-
-    public void setType(typeAccount type) {this.type = type;}
 }

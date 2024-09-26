@@ -1,20 +1,16 @@
 package agent;
 
-public class Ooo extends FinancialAgent {
+public class Ao extends FinancialAgent {
     private int numerOfParticipants;
 
-    private float costOneShare;
-
-    public Ooo() {
-        super(typeAgent.OOO, "");
+    public Ao() {
+        super(TypeAgent.AO, "");
         numerOfParticipants = 0;
-        costOneShare = 0;
     }
 
-    public Ooo(String name, int numerOfParticipants, float costOneShare) {
-        super(typeAgent.OOO, name);
+    public Ao(String name, int numerOfParticipants) {
+        super(TypeAgent.AO, name);
         this.numerOfParticipants = numerOfParticipants;
-        this.costOneShare = costOneShare;
     }
 
     public void participantsUp() {numerOfParticipants++;}
@@ -22,8 +18,4 @@ public class Ooo extends FinancialAgent {
     public void participantsDown() {numerOfParticipants--;}
 
     public int getNumberOfParticipants() {return numerOfParticipants;}
-
-    public void changeCostShare(float costShare) {this.costOneShare += costShare;}
-
-    
 }
