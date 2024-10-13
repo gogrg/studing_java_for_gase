@@ -2,7 +2,7 @@ package account;
 
 import java.math.BigDecimal;
 
-public class DebitAccount {
+public  class DebitAccount {
     protected BigDecimal balance;
     protected String name;
 
@@ -19,11 +19,15 @@ public class DebitAccount {
         this.name = name;
     }
 
-    public void setBalance(BigDecimal balance) {this.balance = balance;}
+    public void replenishBalance(BigDecimal balance) {this.balance = this.balance.add(balance);}
 
     public BigDecimal getBalance() {return balance;}
 
-    public void setName(String name) {this.name = name;}
-
     public String getName() {return name;}
+
+    public void printData(){
+        System.out.println("Debit account details:");
+        System.out.println("Name account: " + name);
+        System.out.println("Balance account: " + balance);
+    }
 }

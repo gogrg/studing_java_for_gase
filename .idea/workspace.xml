@@ -4,27 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c121aed-b03c-42bd-829d-c83863e159e2" name="Changes" comment="Lr2_1 complete">
+    <list default="true" id="7c121aed-b03c-42bd-829d-c83863e159e2" name="Changes" comment="Lr4_1 try 2">
+      <change afterPath="$PROJECT_DIR$/src/countries/AllCountries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/countries/FriendlyCountries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/countries/HostileCountries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/countries/NeutralCountries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/FinancialAgent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/ForeignOrganization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/Organization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/TaxSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/financialAgent/TypeAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazine.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/CreditAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/DebitAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/account/typeAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/typeAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/Ao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/Ao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/FinancialAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/FinancialAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/IP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/IP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent/typeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent/TypeAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/financialSystem/taxSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialSystem/taxSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my_class/Randomize.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/Ak47.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/DesertDigle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/Knife.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/P90.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/USP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weapon/m4A4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Ao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/FinancialAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/IP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agent/TypeAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/financialSystem/TaxSystem.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,22 +63,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Lr4__1&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/trans/Desktop/ucheba GASU/разработка приложения гасу/progect/studing_progect/src/Main.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Lr4__1",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/trans/Desktop/ucheba GASU/разработка приложения гасу/progect/studing_progect/src/Main.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -114,7 +114,15 @@
       <workItem from="1727267709797" duration="2607000" />
       <workItem from="1727280732422" duration="1655000" />
       <workItem from="1727286650512" duration="7983000" />
-      <workItem from="1727332855796" duration="340000" />
+      <workItem from="1727332855796" duration="823000" />
+      <workItem from="1727546528043" duration="2133000" />
+      <workItem from="1727771953566" duration="1450000" />
+      <workItem from="1728554646467" duration="3000" />
+      <workItem from="1728556268764" duration="190000" />
+      <workItem from="1728571103109" duration="4532000" />
+      <workItem from="1728590828138" duration="3405000" />
+      <workItem from="1728634579574" duration="8876000" />
+      <workItem from="1728758982758" duration="14170000" />
     </task>
     <servers />
   </component>
@@ -134,14 +142,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lr2_1 complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lr2_1 complete" />
+    <MESSAGE value="Lr4_1 try 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lr4_1 try 2" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="(amount.multiply(BigDecimal.valueOf(0.8)))&#10;(amount.multiply(BigDecimal.valueOf(0.8)))" language="JAVA" />
-        <watch expression="summToAgent2Account.add(amount.multiply(BigDecimal.valueOf(0.8)))&#10;(amount.multiply(BigDecimal.valueOf(0.8)))" language="JAVA" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/account/DebitAccount.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/financialAgent/FinancialAgent.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

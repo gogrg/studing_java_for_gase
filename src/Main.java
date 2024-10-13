@@ -1,84 +1,41 @@
-import agent.*;
-import financialSystem.*;
+import countries.*;
+import financialAgent.*;
+import account.*;
 import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
-        Person Aleks = new Person("Aleks", "Black", "Potov");
-        Aleks.getDebitAccount().setBalance(BigDecimal.valueOf(1500));
+        //основные участники
+        Person aleks = new Person("Aleks", "Black", "Yow");
+        Person piter = new Person("Piter", "Brown", "Wow");
+        Organization ooo = new Organization(BigDecimal.valueOf(100), "Some organization", BigDecimal.valueOf(23));
+        Organization aoo = new Organization(BigDecimal.valueOf(200), "Some second organization", BigDecimal.valueOf(19));
+        ForeignOrganization foreignOrganization1 = new ForeignOrganization("First foreign organization", AllCountries.USA);
+        ForeignOrganization foreignOrganization2 = new ForeignOrganization("Second foreign organization", AllCountries.BELARUS);
+        ForeignOrganization foreignOrganization3 = new ForeignOrganization("Third foreign organization", AllCountries.EGYPT);
+        //налоговая
+        TaxSystem taxSystem = new TaxSystem();
 
-        outputPerson(Aleks);
+        aleks.getDebitAccount().replenishBalance(BigDecimal.valueOf(10000));
 
-        TaxSystem tax = new TaxSystem();
+        taxSystem.transaction(aleks, piter, BigDecimal.valueOf(100));
 
-        IP ipASD = new IP("ip ASD", BigDecimal.valueOf(1000000));
+        taxSystem.transaction(aleks, ooo, BigDecimal.valueOf(1000));
+        taxSystem.transaction(aleks, aoo, BigDecimal.valueOf(1000));
 
-        System.out.println("Sum operation = 500");
+        taxSystem.transaction(aleks, foreignOrganization1, BigDecimal.valueOf(1000));
+        taxSystem.transaction(aleks, foreignOrganization2, BigDecimal.valueOf(1000));
+        taxSystem.transaction(aleks, foreignOrganization3, BigDecimal.valueOf(1000));
 
-        tax.replenshmentAccount(Aleks, ipASD, BigDecimal.valueOf((500)));
+        taxSystem.transaction(ooo, piter, BigDecimal.valueOf(100));
+        taxSystem.transaction(ooo, aoo, BigDecimal.valueOf(100));
 
-        outputPerson(Aleks);
+        taxSystem.transaction(foreignOrganization1, foreignOrganization2, BigDecimal.valueOf(100));
 
-        outputIP(ipASD);
+        taxSystem.transaction(foreignOrganization1, piter, BigDecimal.valueOf(100));
+        taxSystem.transaction(foreignOrganization2, piter, BigDecimal.valueOf(100));
+        taxSystem.transaction(foreignOrganization3, piter, BigDecimal.valueOf(100));
 
-        Ao aoQWERTY = new Ao("AO QWERTY", 5);
-
-        System.out.println("Sum operation = 1100");
-
-        tax.replenshmentAccount(Aleks, aoQWERTY, BigDecimal.valueOf(1100));
-
-        outputPerson(Aleks);
-
-        outputAO(aoQWERTY);
-
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println("");
-        }
-
-        System.out.println("Summary comission out operation = " + tax.getBankAccount());
-        System.out.println("Comission out IP = 20%");
-        System.out.println("Comission out AO = 33%");
-    }
-
-
-    public static void outputPerson(Person finAgent){
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println("");
-        }
-        System.out.println("Person :" + finAgent.getName() + " " + finAgent.getSurname() + " " + finAgent.getPatronimic());
-        System.out.println("Accounts:");
-        System.out.println("Debit account: ");
-        System.out.println(finAgent.getDebitAccount().getName() + ": " + finAgent.getDebitAccount().getBalance());
-        System.out.println("Credit account: ");
-        System.out.println(finAgent.getCreditAccount().getName() + ": balance: " + finAgent.getCreditAccount().getBalance());
-        System.out.println("Credit limit:" + finAgent.getCreditAccount().getCreditLimit());
-        System.out.println("Credit debt: " + finAgent.getCreditAccount().getCreditLimit().subtract(finAgent.getCreditAccount().getBalance()));
-    }
-
-    public static void outputIP(IP finAgent){
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println("");
-        }
-        System.out.println("Person :" + finAgent.getName());
-        System.out.println("Accounts:");
-        System.out.println("Debit account: ");
-        System.out.println(finAgent.getDebitAccount().getName() + ": balance: " + finAgent.getDebitAccount().getBalance());
-        System.out.println("Property value: " + finAgent.getPropertyValue());
-    }
-
-    public static void outputAO(Ao finAgent){
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println("");
-        }
-        System.out.println("Person :" + finAgent.getName());
-        System.out.println("Accounts:");
-        System.out.println("Debit account: ");
-        System.out.println(finAgent.getDebitAccount().getName() + ": balance: " + finAgent.getDebitAccount().getBalance());
-        System.out.println("Number of Participants: " + finAgent.getNumberOfParticipants());
-
+        taxSystem.transaction(piter, ooo, BigDecimal.valueOf(1000));
     }
 }
