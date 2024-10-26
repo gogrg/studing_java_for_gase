@@ -2,13 +2,29 @@ package account;
 
 import java.math.BigDecimal;
 
-public class CreditAccount extends DebitAccount{
+public class CreditAccount implements Account {
     private BigDecimal creditLimit;
+    private BigDecimal balance;
+    private String name;
 
     public CreditAccount() {
-        super(BigDecimal.valueOf(15000), "Credit acoount");
+        balance = BigDecimal.valueOf(15000);
+        name = "Credit account";
         this.creditLimit = BigDecimal.valueOf(15000);
     }
+
+    public CreditAccount(BigDecimal creditLimit, String name) {
+        balance = creditLimit;
+        this.creditLimit = creditLimit;
+        this.name = name;
+        this.creditLimit = BigDecimal.valueOf(15000);
+    }
+
+    public void replenishBalance(BigDecimal amount) {this.balance = balance.add(amount);}
+
+    public BigDecimal getBalance() {return this.balance;}
+
+    public String getName() {return this.name;}
 
     public void setCreditLimit(BigDecimal creditLimit) {this.creditLimit = creditLimit;}
 
@@ -16,7 +32,6 @@ public class CreditAccount extends DebitAccount{
 
     public BigDecimal getDebt() {return creditLimit.subtract(balance);}
 
-    @Override
     public void printData(){
         System.out.println("Credit account details:");
         System.out.println("Name account: " + name);

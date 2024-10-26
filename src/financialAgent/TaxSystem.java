@@ -12,70 +12,50 @@ public class TaxSystem{
     }
 
     private boolean checkBalanceAgent(FinancialAgent finAgent, BigDecimal sumOfMoney){
-        return !(finAgent.getDebitAccount().getBalance().subtract(sumOfMoney).compareTo(sumOfMoney) < 1);
+        return !(finAgent.getDebitAccount().getBalance().compareTo(sumOfMoney) < 0);
     }
 
-    public void transaction(Person finAgent1, FinancialAgent finAgent2, BigDecimal sumOfMoney) {
-        String message = "";
-        //между людьми
-        if (finAgent2.getTypeAgent() == TypeAgent.PERSON){
-            if (checkBalanceAgent(finAgent1, sumOfMoney)){
-                finAgent1.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(-1)));
-                finAgent2.getDebitAccount().replenishBalance(sumOfMoney);
-                printTransactionData(true, finAgent1, finAgent2, BigDecimal.ZERO, sumOfMoney, message);
-                return;
-            }
-            else{
-                printTransactionData(false, finAgent1, finAgent2, BigDecimal.ZERO, sumOfMoney, message);
-                return;
-            }
-        }
-        //стандартный перевод
-        if (checkBalanceAgent(finAgent1, sumOfMoney)){
-            finAgent1.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(-1)));
-            finAgent2.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(1).subtract(finAgent2.getTax().divide(BigDecimal.valueOf(100)))));
-            this.account.replenishBalance(sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))));
-        }
-        else{
-            finAgent1.getCreditAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(-1)));
-            finAgent2.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(1).subtract(finAgent2.getTax().divide(BigDecimal.valueOf(100)))));
-            this.account.replenishBalance(sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))));
-        }
-        printTransactionData(true, finAgent1, finAgent2, sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))), sumOfMoney, message);
-    }
-
-
-    //пришлось всё таки делать разные методы, потому что проблема не в том, что кредитный аккаунт не может заменить дебетовый(он может),
-    //а ,потому что предок FinancialAgent не содержит поле CreditAccount
     public void transaction(FinancialAgent finAgent1, FinancialAgent finAgent2, BigDecimal sumOfMoney){
         String message = "";
 
+        boolean resultTransaction = true;
+
+        BigDecimal tax = finAgent2.getTax();
+
+        //между человеками
+        if (finAgent2.getTypeAgent() == TypeAgent.PERSON && finAgent2.typeAgent == TypeAgent.PERSON){
+            tax = BigDecimal.ZERO;
+        }
         //между иностранными организациями не наша юрисдикция
-        if(finAgent1.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION && finAgent2.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION){
+        else if(finAgent1.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION && finAgent2.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION){
             message = "Transaction between foreign organization. It out of our jurisdiction";
-            printTransactionData(false, finAgent1, finAgent2, sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))), sumOfMoney,message);
-            return;
+            resultTransaction = false;
+            tax = BigDecimal.ZERO;
         }
         //переводы от иностранной организации
         else if (finAgent1.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION){
-            try {
-                HostileCountries.valueOf(finAgent1.getCountry().name());
-                message = "Warning! ," + finAgent2.getName() + " is inagent!";
+            if (finAgent1.getTypeCountry() == Country.TypeCountry.HOSTILE){
+                message += finAgent1.getName() + " is inagent";
             }
-            catch  (IllegalArgumentException e){
-            }
-
-        }
-        //стандартный перевод
-        if (checkBalanceAgent(finAgent1, sumOfMoney)){
-            finAgent1.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(-1)));
-            finAgent2.getDebitAccount().replenishBalance(sumOfMoney.multiply(BigDecimal.valueOf(1).subtract(finAgent2.getTax().divide(BigDecimal.valueOf(100)))));
-            this.account.replenishBalance(sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))));
-            printTransactionData(true, finAgent1, finAgent2, sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))), sumOfMoney,message);
-            return;
         }
 
-        printTransactionData(false, finAgent1, finAgent2, sumOfMoney.multiply(finAgent2.getTax().divide(BigDecimal.valueOf(100))), sumOfMoney,message);
+        BigDecimal sumTax = sumOfMoney.multiply(tax.divide(BigDecimal.valueOf(100)));
+
+        if (!resultTransaction){
+            printTransactionData(false, finAgent1, finAgent2, sumOfMoney.subtract(sumTax), sumOfMoney,message);
+        }
+        else{
+            if (checkBalanceAgent(finAgent1, sumOfMoney) || finAgent1.getTypeAgent() == TypeAgent.PERSON){
+                finAgent1.pay(sumOfMoney);
+                finAgent2.getDebitAccount().replenishBalance(sumOfMoney.subtract(sumTax));
+                this.account.replenishBalance(sumTax);
+                printTransactionData(true, finAgent1, finAgent2, sumTax, sumOfMoney,message);
+            }
+            else{
+                printTransactionData(false, finAgent1, finAgent2, sumOfMoney.subtract(sumTax), sumOfMoney, message);
+            }
+        }
+
 
     }
 
