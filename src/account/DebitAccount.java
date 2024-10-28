@@ -6,10 +6,8 @@ public class DebitAccount implements Account  {
     protected BigDecimal balance;
     protected String name;
 
-
     public DebitAccount() {
-        balance = BigDecimal.ZERO;
-        name = "Debit account";
+        this(BigDecimal.ZERO, "Debit account");
     }
 
     public DebitAccount(BigDecimal balance, String name) {
