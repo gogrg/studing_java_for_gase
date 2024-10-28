@@ -34,29 +34,21 @@ public class TaxSystem{
         }
         //переводы от иностранной организации
         else if (finAgent1.getTypeAgent() == TypeAgent.FOREIGN_ORGANIZATION){
-            if (finAgent1.getTypeCountry() == Country.TypeCountry.HOSTILE){
+            if (finAgent1.country.getTypeCountry() == TypeCountry.HOSTILE){
                 message += finAgent1.getName() + " is inagent";
             }
         }
 
         BigDecimal sumTax = sumOfMoney.multiply(tax.divide(BigDecimal.valueOf(100)));
 
-        if (!resultTransaction){
-            printTransactionData(false, finAgent1, finAgent2, sumOfMoney.subtract(sumTax), sumOfMoney,message);
+        if (finAgent1.pay(sumOfMoney)){
+            finAgent2.getDebitAccount().replenishBalance(sumOfMoney.subtract(sumTax));
+            this.account.replenishBalance(sumTax);
+            printTransactionData(true, finAgent1, finAgent2, sumTax, sumOfMoney,message);
         }
         else{
-            if (checkBalanceAgent(finAgent1, sumOfMoney) || finAgent1.getTypeAgent() == TypeAgent.PERSON){
-                finAgent1.pay(sumOfMoney);
-                finAgent2.getDebitAccount().replenishBalance(sumOfMoney.subtract(sumTax));
-                this.account.replenishBalance(sumTax);
-                printTransactionData(true, finAgent1, finAgent2, sumTax, sumOfMoney,message);
-            }
-            else{
                 printTransactionData(false, finAgent1, finAgent2, sumOfMoney.subtract(sumTax), sumOfMoney, message);
-            }
         }
-
-
     }
 
     public void printTransactionData(boolean isSuccess, FinancialAgent finAgent1, FinancialAgent finAgent2, BigDecimal tax ,BigDecimal sumOfMoney, String message){

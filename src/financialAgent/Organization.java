@@ -13,14 +13,9 @@ public class Organization extends FinancialAgent{
         this.priceShare = priceShare;
     }
 
-    private void upNumberBoughtShare(){numberBoughtShare++;}
-
-    public int getNumberBoughtShare() {return numberBoughtShare;}
-    public BigDecimal getPriceShare() {return priceShare;}
-    public int numberBoughtShare() {return numberBoughtShare;}
     public void buyShare(Person person, TaxSystem taxSystem){
-        taxSystem.transaction(person, this, priceShare);
         numberBoughtShare++;
+        taxSystem.transaction(person, this, priceShare);
     }
 
     @Override

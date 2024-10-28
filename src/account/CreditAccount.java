@@ -8,8 +8,7 @@ public class CreditAccount implements Account {
     private String name;
 
     public CreditAccount() {
-        balance = BigDecimal.valueOf(15000);
-        name = "Credit account";
+        this(BigDecimal.valueOf(15000), "Credit account");
         this.creditLimit = BigDecimal.valueOf(15000);
     }
 
@@ -25,10 +24,6 @@ public class CreditAccount implements Account {
     public BigDecimal getBalance() {return this.balance;}
 
     public String getName() {return this.name;}
-
-    public void setCreditLimit(BigDecimal creditLimit) {this.creditLimit = creditLimit;}
-
-    public BigDecimal getCreditLimit() {return this.creditLimit;}
 
     public BigDecimal getDebt() {return creditLimit.subtract(balance);}
 

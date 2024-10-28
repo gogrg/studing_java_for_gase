@@ -15,9 +15,6 @@ public class Person extends FinancialAgent{
         creditAccount = new CreditAccount();
     }
 
-    public String getPatronimic(){return patronimic;}
-    public String getSurname(){return surname;}
-    public CreditAccount getCreditAccount(){return creditAccount;}
 
     @Override
     public boolean pay(BigDecimal amount) {
@@ -38,7 +35,7 @@ public class Person extends FinancialAgent{
         System.out.println("Patronimic: " + patronimic);
         System.out.println("Type agent: " + typeAgent);
         System.out.println("Country: " + country);
-        System.out.println("Type country: " + typeCountry);
+        System.out.println("Type country: " + this.country.getTypeCountry());
         System.out.println("Tax: " + tax);
         debitAccount.printData();
         creditAccount.printData();

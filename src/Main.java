@@ -10,9 +10,9 @@ public class Main {
         Person piter = new Person("Piter", "Brown", "Wow");
         Organization ooo = new Organization(BigDecimal.valueOf(100), "Some organization", BigDecimal.valueOf(23));
         Organization aoo = new Organization(BigDecimal.valueOf(200), "Some second organization", BigDecimal.valueOf(19));
-        ForeignOrganization foreignOrganization1 = new ForeignOrganization("First foreign organization", Country.USA, Country.TypeCountry.HOSTILE);
-        ForeignOrganization foreignOrganization2 = new ForeignOrganization("Second foreign organization", Country.BELARUS, Country.TypeCountry.FRIENDLY);
-        ForeignOrganization foreignOrganization3 = new ForeignOrganization("Third foreign organization", Country.EGYPT, Country.TypeCountry.NEUTRAL);
+        ForeignOrganization foreignOrganization1 = new ForeignOrganization("First foreign organization", Country.USA);
+        ForeignOrganization foreignOrganization2 = new ForeignOrganization("Second foreign organization", Country.BELARUS);
+        ForeignOrganization foreignOrganization3 = new ForeignOrganization("Third foreign organization", Country.EGYPT);
         //налоговая
         TaxSystem taxSystem = new TaxSystem();
 
@@ -43,5 +43,7 @@ public class Main {
 
         taxSystem.transaction(piter, ooo, sumPay1);
         taxSystem.transaction(piter, ooo, sumPay3);
+
+        ooo.buyShare(aleks, taxSystem);
     }
 }
