@@ -14,5 +14,7 @@ public enum Country {
         this.typeCountry = typeCountry;
     }
 
-    public TypeCountry getTypeCountry() {return this.typeCountry;}
+    public TypeCountry getTypeCountry() {
+        return this.typeCountry;
+    }
 }

@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c121aed-b03c-42bd-829d-c83863e159e2" name="Changes" comment="Lr4_1 try 3 correction 1">
-      <change afterPath="$PROJECT_DIR$/src/countries/TypeCountry.java" afterDir="false" />
+    <list default="true" id="7c121aed-b03c-42bd-829d-c83863e159e2" name="Changes" comment="Lr4_1 try 3 correction 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/CreditAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/countries/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/countries/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/financialAgent/FinancialAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialAgent/FinancialAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/financialAgent/ForeignOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialAgent/ForeignOrganization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/financialAgent/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialAgent/Organization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/DebitAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/financialAgent/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialAgent/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/financialAgent/TaxSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/financialAgent/TaxSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +48,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -129,7 +125,10 @@
       <workItem from="1729966851585" duration="5531000" />
       <workItem from="1730031004500" duration="130000" />
       <workItem from="1730099690526" duration="3176000" />
-      <workItem from="1730132091855" duration="2452000" />
+      <workItem from="1730132091855" duration="3157000" />
+      <workItem from="1730230209210" duration="4891000" />
+      <workItem from="1730235303439" duration="255000" />
+      <workItem from="1730280542642" duration="381000" />
     </task>
     <task id="LOCAL-00001" summary="Lr4_1 try 2">
       <option name="closed" value="true" />
@@ -155,7 +154,39 @@
       <option name="project" value="LOCAL" />
       <updated>1730099842000</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Lr4_1 try 3 correction 2">
+      <option name="closed" value="true" />
+      <created>1730135789915</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730135789915</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Lr4_1 try 3 correction 3">
+      <option name="closed" value="true" />
+      <created>1730234910535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730234910535</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Lr4_1 try 3 correction 3">
+      <option name="closed" value="true" />
+      <created>1730235116208</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730235116208</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Lr4_1 try 3 correction 3">
+      <option name="closed" value="true" />
+      <created>1730235390256</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730235390256</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +208,8 @@
     <MESSAGE value="Lr4_1 try 2" />
     <MESSAGE value="Lr4_1 try 3" />
     <MESSAGE value="Lr4_1 try 3 correction 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lr4_1 try 3 correction 1" />
+    <MESSAGE value="Lr4_1 try 3 correction 2" />
+    <MESSAGE value="Lr4_1 try 3 correction 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lr4_1 try 3 correction 3" />
   </component>
 </project>

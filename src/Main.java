@@ -7,7 +7,9 @@ public class Main {
     public static void main(String[] args) {
         //основные участники
         Person aleks = new Person("Aleks", "Black", "Yow");
+        aleks.getDebitAccount().setName("Aleks's debit account");
         Person piter = new Person("Piter", "Brown", "Wow");
+        piter.getCreditAccount().setName("Piter's credit account");
         Organization ooo = new Organization(BigDecimal.valueOf(100), "Some organization", BigDecimal.valueOf(23));
         Organization aoo = new Organization(BigDecimal.valueOf(200), "Some second organization", BigDecimal.valueOf(19));
         ForeignOrganization foreignOrganization1 = new ForeignOrganization("First foreign organization", Country.USA);
@@ -45,5 +47,14 @@ public class Main {
         taxSystem.transaction(piter, ooo, sumPay3);
 
         ooo.buyShare(aleks, taxSystem);
+
+        aleks.getCreditAccount().setCreditLimit(BigDecimal.valueOf(18000));
+        if (aleks.replenishCreditAccount(BigDecimal.valueOf(1000))){
+            System.out.println("Replenish credit account successfully");
+        }
+        else{
+            System.out.println("Replenish credit account not completed. Insufficient funds");
+        }
+        aleks.printData();
     }
 }

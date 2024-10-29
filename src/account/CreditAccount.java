@@ -8,30 +8,36 @@ public class CreditAccount implements Account {
     private String name;
 
     public CreditAccount() {
-        this(BigDecimal.valueOf(15000), "Credit account");
+        this.balance = BigDecimal.valueOf(15000);
         this.creditLimit = BigDecimal.valueOf(15000);
+        this.name = "Credit account";
     }
 
-    public CreditAccount(BigDecimal creditLimit, String name) {
-        balance = creditLimit;
+    public void setCreditLimit(BigDecimal creditLimit) {
         this.creditLimit = creditLimit;
-        this.name = name;
-        this.creditLimit = BigDecimal.valueOf(15000);
     }
 
-    public void replenishBalance(BigDecimal amount) {this.balance = balance.add(amount);}
+    public void replenishBalance(BigDecimal amount) {
+        this.balance = balance.add(amount);
+    }
 
-    public BigDecimal getBalance() {return this.balance;}
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
 
-    public String getName() {return this.name;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public BigDecimal getDebt() {return creditLimit.subtract(balance);}
+    public BigDecimal getDebt() {
+        return this.creditLimit.subtract(balance);
+    }
 
-    public void printData(){
+    public void printData() {
         System.out.println("Credit account details:");
-        System.out.println("Name account: " + name);
-        System.out.println("Balance account: " + balance);
-        System.out.println("Credit limit: " + creditLimit);
+        System.out.println("Name account: " + this.name);
+        System.out.println("Balance account: " + this.balance);
+        System.out.println("Credit limit: " + this.creditLimit);
         System.out.println("Debt: " + getDebt());
     }
 }

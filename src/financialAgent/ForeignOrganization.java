@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class ForeignOrganization extends FinancialAgent {
 
     public ForeignOrganization(String name, Country country) {
-        super(name, TypeAgent.FOREIGN_ORGANIZATION, BigDecimal.valueOf(20), country);
+        super(name, TypeAgent.FOREIGN_ORGANIZATION, BigDecimal.valueOf(20));
         this.country = country;
     }
 }
