@@ -1,60 +1,48 @@
-import countries.*;
-import financialAgent.*;
-
-import java.math.BigDecimal;
+import java.util.concurrent.*;
+import java.util.concurrent.BlockingQueue;
 
 public class Main {
     public static void main(String[] args) {
-        //основные участники
-        Person aleks = new Person("Aleks", "Black", "Yow");
-        aleks.getDebitAccount().setName("Aleks's debit account");
-        Person piter = new Person("Piter", "Brown", "Wow");
-        piter.getCreditAccount().setName("Piter's credit account");
-        Organization ooo = new Organization(BigDecimal.valueOf(100), "Some organization", BigDecimal.valueOf(23));
-        Organization aoo = new Organization(BigDecimal.valueOf(200), "Some second organization", BigDecimal.valueOf(19));
-        ForeignOrganization foreignOrganization1 = new ForeignOrganization("First foreign organization", Country.USA);
-        ForeignOrganization foreignOrganization2 = new ForeignOrganization("Second foreign organization", Country.BELARUS);
-        ForeignOrganization foreignOrganization3 = new ForeignOrganization("Third foreign organization", Country.EGYPT);
-        //налоговая
-        TaxSystem taxSystem = new TaxSystem();
+        final int AMOUNT_MESSAGE = 20
+                ;
 
-        BigDecimal sumPay1 = BigDecimal.valueOf(100);
-        BigDecimal sumPay2 = BigDecimal.valueOf(1000);
-        BigDecimal sumPay3 = BigDecimal.valueOf(5000);
-        BigDecimal plantar = BigDecimal.valueOf(10000);
+        BlockingQueue<String> queue = new LinkedBlockingQueue<>(10);
 
-        aleks.getDebitAccount().replenishBalance(plantar);
+        FutureTask<Integer> producer = new FutureTask<>(new Producer(queue, AMOUNT_MESSAGE));
+        new Thread(producer).start();
 
-        taxSystem.transaction(aleks, piter, sumPay2);
+        ThreadFactory namedThreadFactory = new ThreadFactory() {
+            private int count = 0;
 
-        taxSystem.transaction(aleks, ooo, sumPay2);
-        taxSystem.transaction(aleks, aoo, sumPay2);
+            public Thread newThread(Runnable r) {
+                Thread thread = new Thread(r);
+                thread.setName("Consumer " + count);
+                count++;
 
-        taxSystem.transaction(aleks, foreignOrganization1, sumPay2);
-        taxSystem.transaction(aleks, foreignOrganization2, sumPay2);
-        taxSystem.transaction(aleks, foreignOrganization3, sumPay2);
+                return thread;
+            }
+        };
 
-        taxSystem.transaction(ooo, piter, sumPay1);
-        taxSystem.transaction(ooo, aoo, sumPay1);
-
-        taxSystem.transaction(foreignOrganization1, foreignOrganization2, sumPay1);
-
-        taxSystem.transaction(foreignOrganization1, piter, sumPay1);
-        taxSystem.transaction(foreignOrganization2, piter, sumPay1);
-        taxSystem.transaction(foreignOrganization3, piter, sumPay1);
-
-        taxSystem.transaction(piter, ooo, sumPay1);
-        taxSystem.transaction(piter, ooo, sumPay3);
-
-        ooo.buyShare(aleks, taxSystem);
-
-        aleks.getCreditAccount().setCreditLimit(BigDecimal.valueOf(18000));
-        if (aleks.replenishCreditAccount(BigDecimal.valueOf(1000))){
-            System.out.println("Replenish credit account successfully");
+        try(ExecutorService pool = Executors.newFixedThreadPool(10, namedThreadFactory)){
+            while (true) {
+                FutureTask<Integer> task = new FutureTask<>(new Consumer(queue));
+                pool.submit(task);
+                try{
+                    int answer = task.get();
+                    if (answer == 0){
+                        pool.shutdownNow();
+                        break;
+                    }
+                }
+                catch (InterruptedException | ExecutionException e) {
+                    System.out.println("Task interrupted");
+                }
+            }
         }
-        else{
-            System.out.println("Replenish credit account not completed. Insufficient funds");
+        catch (Exception e) {
+            System.out.println("Try highlight pool threads failed");
+            System.out.println(e.getMessage());
         }
-        aleks.printData();
+
     }
 }
