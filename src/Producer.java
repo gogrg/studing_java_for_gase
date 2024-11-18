@@ -17,6 +17,7 @@ class Producer implements Callable<Integer> {
                 try {
                     queue.put(String.valueOf(i));
                 } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
                 }
             } catch (InputMismatchException e1) {
                 System.out.println("Invalid input");
