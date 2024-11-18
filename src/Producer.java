@@ -14,17 +14,10 @@ class Producer implements Callable<Integer> {
     public Integer call() {
         for (int i = 0; i < amount; i++) {
             try {
-                    //Scanner in = new Scanner(System.in);
-                    //System.out.println("Enter some message");
-                    //String message = in.nextLine();
                 try {
                     queue.put(String.valueOf(i));
-                    //System.out.println(Thread.currentThread().getName() + " put in queue " + message);
                 } catch (InterruptedException e) {
-                    //                try {
-                    //                    wait();
                 }
-                //                } catch (InterruptedException e2) {}
             } catch (InputMismatchException e1) {
                 System.out.println("Invalid input");
             }

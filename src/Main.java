@@ -3,8 +3,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class Main {
     public static void main(String[] args) {
-        final int AMOUNT_MESSAGE = 20
-                ;
+        final int AMOUNT_MESSAGE = 20;
 
         BlockingQueue<String> queue = new LinkedBlockingQueue<>(10);
 
@@ -23,23 +22,21 @@ public class Main {
             }
         };
 
-        try(ExecutorService pool = Executors.newFixedThreadPool(10, namedThreadFactory)){
+        try (ExecutorService pool = Executors.newFixedThreadPool(10, namedThreadFactory)) {
             while (true) {
                 FutureTask<Integer> task = new FutureTask<>(new Consumer(queue));
                 pool.submit(task);
-                try{
+                try {
                     int answer = task.get();
-                    if (answer == 0){
+                    if (answer == 0) {
                         pool.shutdownNow();
                         break;
                     }
-                }
-                catch (InterruptedException | ExecutionException e) {
-                    System.out.println("Task interrupted");
+                } catch (InterruptedException | ExecutionException e) {
+                    System.out.println("Task interrupted: " + e.getMessage());
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Try highlight pool threads failed");
             System.out.println(e.getMessage());
         }
